@@ -120,12 +120,3 @@ This helps assess how well the model captures short-term market movements.
 * Deploy as a **web dashboard** using Streamlit or Dash for real-time prediction visualization.
 
 ---
-
-## 🧩 Author
-
-**Syed Muhammad Taha Nasir**
-Data Analyst | Energy Analyst | Machine Learning & Computer Vision Enthusiast
-🔗 [GitHub: DataWithSyed](https://github.com/DataWithSyed)
-
----
-
