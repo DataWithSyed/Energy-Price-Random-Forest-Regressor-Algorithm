@@ -86,7 +86,7 @@ This helps assess how well the model captures short-term market movements.
 2. **Install dependencies:**
 
    ```bash
-   pip install pandas scikit-learn matplotlib
+   pip install -r requirements.txt
    ```
 
 3. **Provide your own dataset:**
@@ -96,10 +96,12 @@ This helps assess how well the model captures short-term market movements.
    Date, Price, Demand, Renewable_Generation
    ```
 
-4. **Run the script:**
+4. **Run the notebook:**
+
+   Open `Energy Price Forecasting_ML.ipynb` in Jupyter and run all cells:
 
    ```bash
-   python forecast_energy_price.py
+   jupyter notebook "Energy Price Forecasting_ML.ipynb"
    ```
 
 ---
@@ -112,10 +114,40 @@ This helps assess how well the model captures short-term market movements.
 
 ---
 
+## 📊 Model Evaluation
+
+The notebook prints quantitative metrics after prediction:
+
+| Metric | Description |
+|--------|-------------|
+| **MAE** | Mean Absolute Error — average magnitude of errors |
+| **RMSE** | Root Mean Squared Error — penalises large errors more |
+| **R²** | Coefficient of Determination — proportion of variance explained |
+
+---
+
+## 🔧 Changelog
+
+### Code Review Fixes (2026-04-04)
+
+The following issues were identified and resolved:
+
+| # | Issue | Fix |
+|---|-------|-----|
+| 1 | `exit()` crashes Jupyter kernel | Replaced with `raise FileNotFoundError(...)` for proper exception handling |
+| 2 | `KeyError: 'Date'` when CSV has whitespace in column headers | Added `data.columns = data.columns.str.strip()` to normalize column names |
+| 3 | No validation of required columns before processing | Added explicit column presence check with a descriptive `ValueError` |
+| 4 | No model evaluation metrics | Added MAE, RMSE, and R² score output after prediction |
+| 5 | Missing `requirements.txt` | Added `requirements.txt` listing all dependencies |
+| 6 | README referenced non-existent `forecast_energy_price.py` | Updated to reference the correct `.ipynb` notebook file |
+| 7 | Missing `numpy` import (needed for `np.sqrt`) | Added `import numpy as np` |
+
+---
+
 ## 📈 Future Enhancements
 
 * Integrate **LSTM** or **XGBoost** for improved time-series forecasting accuracy.
-* Include **error metrics** (MAE, RMSE, MAPE) for quantitative evaluation.
+* Add **MAPE** (Mean Absolute Percentage Error) for business-friendly reporting.
 * Add **hyperparameter tuning** for optimal model performance.
 * Deploy as a **web dashboard** using Streamlit or Dash for real-time prediction visualization.
 
